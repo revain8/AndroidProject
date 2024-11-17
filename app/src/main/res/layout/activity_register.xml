@@ -98,13 +98,9 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="32dp"
             android:layout_marginBottom="20dp"
-            android:fontFamily="@font/montserrat_semibold"
-            android:paddingVertical="14dp"
             android:text="@string/next"
             android:layout_marginTop="24dp"
-            android:textSize="20sp"
-            app:backgroundTint="@color/primary_pink"
-            app:cornerRadius="12dp"
+            style="@style/CustomButton"
             app:icon="@drawable/arrow_right_icon"
             app:iconGravity="textEnd"
             app:iconSize="10dp"
@@ -120,14 +116,9 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="32dp"
             android:hint="@string/full_name"
-            android:textColorHint="@color/black_50"
-            app:boxBackgroundColor="@color/white_C4"
-            app:boxCornerRadiusBottomEnd="10dp"
-            app:boxCornerRadiusBottomStart="10dp"
-            app:boxCornerRadiusTopEnd="10dp"
-            app:boxCornerRadiusTopStart="10dp"
-            app:boxStrokeColor="@color/primary_pink"
-            app:boxStrokeWidth="0dp"
+            style="@style/CustomTextInput"
+            app:endIconDrawable="@drawable/user_icon"
+            app:endIconMode="custom"
             app:layout_constraintBottom_toTopOf="@id/tlValidEmail"
             app:layout_constraintVertical_chainStyle="packed"
             app:layout_constraintEnd_toEndOf="parent"
@@ -137,7 +128,6 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:drawableEnd="@drawable/user_icon"
                 android:inputType="text"
                 android:maxLines="1"
                 android:singleLine="true"
@@ -149,31 +139,22 @@
             android:id="@+id/tlValidEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-
+            style="@style/CustomTextInput"
+            app:endIconDrawable="@drawable/mail_icon"
+            app:endIconMode="custom"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:boxStrokeColor="@color/primary_pink"
-            app:boxBackgroundColor="@color/white_C4"
-            app:boxStrokeWidth="0dp"
-            app:boxCornerRadiusBottomEnd="10dp"
             android:layout_marginHorizontal="32dp"
-            app:boxCornerRadiusBottomStart="10dp"
-            app:boxCornerRadiusTopEnd="10dp"
-
             app:layout_constraintBottom_toTopOf="@id/tlPhone"
             app:layout_constraintVertical_chainStyle="packed"
             app:layout_constraintTop_toBottomOf="@id/tlFullName"
             android:layout_marginTop="16dp"
-            app:boxCornerRadiusTopStart="10dp"
-            android:hint="@string/valid_email"
-            android:textColorHint="@color/black_50">
+            android:hint="@string/valid_email">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColor="@color/black"
-                android:drawableEnd="@drawable/mail_icon"
-                android:inputType="textEmailAddress"
                 android:id="@+id/etValidEmail"
                 />
 
@@ -184,17 +165,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="32dp"
-
+            app:endIconMode="custom"
+            app:endIconDrawable="@drawable/phone_icon"
+            style="@style/CustomTextInput"
             android:hint="@string/phone_number"
-            android:textColorHint="@color/black_50"
-            app:boxBackgroundColor="@color/white_C4"
-            app:boxCornerRadiusBottomEnd="10dp"
-            app:boxCornerRadiusBottomStart="10dp"
-            app:boxCornerRadiusTopEnd="10dp"
-            app:boxCornerRadiusTopStart="10dp"
-            app:boxStrokeColor="@color/primary_pink"
-            app:boxStrokeWidth="0dp"
-
             app:layout_constraintBottom_toTopOf="@id/tlStrongPass"
             app:layout_constraintVertical_chainStyle="packed"
             android:layout_marginTop="16dp"
@@ -207,8 +181,6 @@
                 android:id="@+id/etPhone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:drawableEnd="@drawable/phone_icon"
-                android:inputType="phone"
                 android:textColor="@color/black" />
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -220,25 +192,19 @@
             android:layout_marginHorizontal="32dp"
             android:layout_marginTop="16dp"
             android:hint="@string/strong_pass"
-            android:textColorHint="@color/black_50"
-            app:boxBackgroundColor="@color/white_C4"
-            app:boxCornerRadiusBottomEnd="10dp"
-            app:boxCornerRadiusBottomStart="10dp"
-            app:boxCornerRadiusTopEnd="10dp"
-            app:boxCornerRadiusTopStart="10dp"
-            app:boxStrokeColor="@color/primary_pink"
-            app:boxStrokeWidth="0dp"
+            style="@style/CustomTextInput"
+            app:endIconMode="custom"
+            app:endIconDrawable="@drawable/password_icon"
             app:layout_constraintBottom_toTopOf="@+id/materialButton"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tlPhone"
-            app:prefixText="+48">
+            >
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etPassword"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:drawableEnd="@drawable/password_icon"
                 android:inputType="phone"
                 android:textColor="@color/black" />
 

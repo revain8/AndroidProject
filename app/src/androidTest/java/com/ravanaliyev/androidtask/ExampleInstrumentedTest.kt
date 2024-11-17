@@ -1,7 +1,7 @@
 package com.ravanaliyev.androidtask
 
-import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4
+import com.ravanaliyev.androidtask.ui.utils.CredentialsManager
 
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -15,10 +15,32 @@ import org.junit.Assert.*
  */
 @RunWith(AndroidJUnit4::class)
 class ExampleInstrumentedTest {
+
+    private val credentialsManager = CredentialsManager()
+
     @Test
-    fun useAppContext() {
-        // Context of the app under test.
-        val appContext = InstrumentationRegistry.getInstrumentation().targetContext
-        assertEquals("com.ravanaliyev.androidtask", appContext.packageName)
+    fun givenWrongEmail_returnsFalse() {
+        assertFalse(credentialsManager.validateEmail("testEmail@acv").isSuccess)
     }
+
+    @Test
+    fun givenEmailIsEmpty_returnsFalse(){
+        assertFalse(credentialsManager.validateEmail("").isSuccess)
+    }
+
+    @Test
+    fun givenEmailIsCorrect_returnsTrue(){
+        assertTrue(credentialsManager.validateEmail("test@gmail.com").isSuccess)
+    }
+
+    @Test
+    fun givenPasswordIsEmpty_returnFalse(){
+        assertFalse(credentialsManager.validatePassword("").isSuccess)
+    }
+
+    @Test
+    fun givenPasswordIsCorrect_returnsTrue(){
+        assertTrue(credentialsManager.validatePassword("1234").isSuccess)
+    }
+
 }
