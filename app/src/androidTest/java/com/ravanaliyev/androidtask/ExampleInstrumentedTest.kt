@@ -1,12 +1,10 @@
 package com.ravanaliyev.androidtask
 
 import androidx.test.ext.junit.runners.AndroidJUnit4
-import com.ravanaliyev.androidtask.ui.utils.CredentialsManager
-
+import com.ravanaliyev.androidtask.utils.CredentialsManager
+import org.junit.Assert.*
 import org.junit.Test
 import org.junit.runner.RunWith
-
-import org.junit.Assert.*
 
 /**
  * Instrumented test, which will execute on an Android device.
@@ -29,18 +27,29 @@ class ExampleInstrumentedTest {
     }
 
     @Test
-    fun givenEmailIsCorrect_returnsTrue(){
-        assertTrue(credentialsManager.validateEmail("test@gmail.com").isSuccess)
+    fun givenEmailIsCorrect_returnsFalse() {
+        assertFalse(credentialsManager.validateEmail("test@gmail.com").isSuccess)
     }
 
     @Test
-    fun givenPasswordIsEmpty_returnFalse(){
+    fun givenPasswordIsEmpty_returnFalse() {
         assertFalse(credentialsManager.validatePassword("").isSuccess)
     }
 
     @Test
-    fun givenPasswordIsCorrect_returnsTrue(){
+    fun givenPasswordIsCorrect_returnsFalse() {
+        assertFalse(credentialsManager.validatePassword("123").isSuccess)
+    }
+
+
+    @Test
+    fun givenPasswordIsUser_returnsTrue() {
         assertTrue(credentialsManager.validatePassword("1234").isSuccess)
+    }
+
+    @Test
+    fun givenEmailIsUser_returnsTrue() {
+        assertTrue(credentialsManager.validateEmail("test@te.st").isSuccess)
     }
 
 }
