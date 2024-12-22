@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.NavDirections
 import androidx.navigation.fragment.findNavController
@@ -38,6 +39,10 @@ abstract class BaseFragment<VB : ViewBinding>(
 
     fun navigate(destination: Int) {
         findNavController().navigate(destination)
+    }
+
+    fun showToast(message: String, duration: Int = Toast.LENGTH_LONG) {
+        Toast.makeText(requireContext(), message, duration).show()
     }
 
     fun navigateBack() = findNavController().popBackStack()
