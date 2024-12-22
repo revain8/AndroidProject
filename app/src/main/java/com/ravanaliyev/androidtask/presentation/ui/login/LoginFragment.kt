@@ -1,32 +1,21 @@
-package com.ravanaliyev.androidtask.ui.login
+package com.ravanaliyev.androidtask.presentation.ui.login
 
-import android.content.Intent
-import android.os.Bundle
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
-import com.ravanaliyev.androidtask.databinding.ActivityMainBinding
-import com.ravanaliyev.androidtask.ui.home.HomeActivity
-import com.ravanaliyev.androidtask.ui.register.RegisterActivity
+import com.ravanaliyev.androidtask.common.BaseFragment
+import com.ravanaliyev.androidtask.databinding.FragmentLoginBinding
 import com.ravanaliyev.androidtask.utils.CredentialsManager
 
-class MainActivity : AppCompatActivity() {
-
-    private val binding by lazy { ActivityMainBinding.inflate(layoutInflater) }
+class LoginFragment : BaseFragment<FragmentLoginBinding>(FragmentLoginBinding::inflate) {
 
     private val credentialsManager = CredentialsManager()
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(binding.root)
+    override fun onViewCreateFinish() {
         setup()
     }
-
 
     private fun setup() {
         with(binding) {
             buttonRegister.setOnClickListener {
-                startActivity(Intent(this@MainActivity, RegisterActivity::class.java))
-                finish()
+                navigate(LoginFragmentDirections.actionLoginFragmentToRegisterFragment())
             }
             buttonLogin.setOnClickListener {
                 login()
@@ -48,18 +37,18 @@ class MainActivity : AppCompatActivity() {
 
             if (hasError) {
                 Toast.makeText(
-                    this@MainActivity,
+                    requireContext(),
                     loginCredentials.first { it.isSuccess.not() }.errorMessage.orEmpty(),
-                    Toast.LENGTH_LONG
+                    android.widget.Toast.LENGTH_LONG
                 ).show()
                 return
             }
-            Toast.makeText(this@MainActivity, "Welcome.", Toast.LENGTH_LONG).show()
-            startActivity(Intent(this@MainActivity, HomeActivity::class.java))
-            finish()
+            Toast.makeText(requireContext(), "Welcome.", android.widget.Toast.LENGTH_LONG).show()
+            navigate(LoginFragmentDirections.actionLoginFragmentToHomeFragment())
 
         }
 
     }
+
 
 }
